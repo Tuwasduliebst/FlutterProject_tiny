@@ -10,4 +10,4 @@
 
 - Learning about the placement of widgets using the Column widget.
 
-<imag align="center" src="./capture.gif" width="300px">
+<img align="center" src="./capture.gif" width="300px">
