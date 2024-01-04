@@ -1,6 +1,6 @@
-# The day we broke up App
+# The day we got divorced App
 
-##Build "The day we broke up" app
+##Build an app that can calculate how many days have passed since a certain date
 
 - Applying a Font
 - Using the Date Picker
@@ -8,4 +8,4 @@
 - Using themes in Flutter
 - Utilizing the Cupertino Dialog
 
-<img src="./caputure.gif" widht="300px" >
+<img src="./capture.gif" widht="300px" >
