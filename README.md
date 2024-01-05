@@ -7,6 +7,7 @@
     ├── counter
     ├── image_carousel
     ├── pomodoro
+    ├── random_number_generator
     ├── splash_screen
     ├── theme
     ├── wallets_ui
@@ -19,8 +20,9 @@
 ##counter
 ##image_carousel
 ##pomodoro
+##random_number_generator
 ##splash_screen
 ##theme
 ##wallets_ui
 ##webtoon
-##webview -->
+##webview  -->
