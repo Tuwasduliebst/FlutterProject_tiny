@@ -5,6 +5,7 @@
 └── FlutterProject_tiny
     ├── after_divorce
     ├── counter
+    ├── digital_random_dice
     ├── image_carousel
     ├── pomodoro
     ├── random_number_generator
@@ -18,6 +19,7 @@
 <!-- #FlutterProject_tiny
 ##after_divorce
 ##counter
+##digital_random_dice
 ##image_carousel
 ##pomodoro
 ##random_number_generator
