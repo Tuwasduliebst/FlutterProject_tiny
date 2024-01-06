@@ -72,4 +72,4 @@ children: [
                         .toList(),
 ```
 
-<img align="center" src="./capture.gif" width="300px">
+<img align="center" src="./capture2.gif" width="300px">

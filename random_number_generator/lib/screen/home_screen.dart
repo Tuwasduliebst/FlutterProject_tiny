@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:random_number_generator/component/number_row.dart';
 import 'package:random_number_generator/constant/color.dart';
+import 'package:random_number_generator/screen/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int maxNumber = 1000;
   List<int> randomNumbers = [
     123,
     456,
@@ -20,44 +23,63 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: PRIMARY_COLOR,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const _Header(),
-                _Body(randomNumbers: randomNumbers),
-                 _Footer(onPressed: onRandomNumberGenerate),
-              ],
-            ),
+      backgroundColor: PRIMARY_COLOR,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
           ),
-        ),);
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Header(
+                onPressed: onSettingsPop,
+              ),
+              _Body(randomNumbers: randomNumbers),
+              _Footer(onPressed: onRandomNumberGenerate),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
-  void onRandomNumberGenerate(){
+  void onSettingsPop() async {
+    final int? result = await Navigator.of(context).push<int>(
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return SettingsScreen(
+            maxNumber: maxNumber,
+          );
+        },
+      ),
+    );
+    if (result != null) {
+      setState(() {
+        maxNumber = result;
+      });
+    }
+  }
 
-          final rand = Random();
-          final Set<int> newNumbers = {};
+  void onRandomNumberGenerate() {
+    final rand = Random();
+    final Set<int> newNumbers = {};
 
-          while (newNumbers.length != 3) {
-            final number = rand.nextInt(1000);
-            newNumbers.add(number);
-          }
-          setState(() {
-            randomNumbers = newNumbers.toList();
-          });
+    while (newNumbers.length != 3) {
+      final number = rand.nextInt(maxNumber);
+      newNumbers.add(number);
+    }
+    setState(() {
+      randomNumbers = newNumbers.toList();
+    });
   }
 }
 
 class _Body extends StatelessWidget {
   const _Body({
-    super.key,
     required this.randomNumbers,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final List<int> randomNumbers;
 
@@ -72,18 +94,8 @@ class _Body extends StatelessWidget {
             .map(
               (x) => Padding(
                 padding: EdgeInsets.only(bottom: x.key == 2 ? 0 : 16.0),
-                child: Row(
-                  children: x.value
-                      .toString()
-                      .split('')
-                      .map(
-                        (y) => Image.asset(
-                          'asset/img/$y.png',
-                          height: 70.0,
-                          width: 50.0,
-                        ),
-                      )
-                      .toList(),
+                child: NumberRow(
+                  number: x.value,
                 ),
               ),
             )
@@ -94,9 +106,9 @@ class _Body extends StatelessWidget {
 }
 
 class _Header extends StatelessWidget {
-  const _Header({
-    super.key,
-  });
+  final VoidCallback onPressed;
+
+  const _Header({required this.onPressed, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +124,7 @@ class _Header extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: onPressed,
           icon: const Icon(
             color: RED_COLOR,
             Icons.settings,
@@ -125,7 +137,10 @@ class _Header extends StatelessWidget {
 
 class _Footer extends StatelessWidget {
   final VoidCallback onPressed;
-  const _Footer({required this.onPressed super.key});
+  const _Footer({
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +150,7 @@ class _Footer extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: RED_COLOR,
         ),
-        onPressed: onPressed(),
+        onPressed: onPressed,
         child: const Text(
           'Generate',
           style: TextStyle(color: Colors.white),
