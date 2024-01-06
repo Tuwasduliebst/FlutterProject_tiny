@@ -11,4 +11,4 @@ plugins
 - shake:2.1.0
   -sensors_plus:1.3.4+1
 
-<img align="center" src="./capture.gif" width="300px">
+<img align="center" src="./capture.png" width="300px">
