@@ -7,6 +7,7 @@
     ├── counter
     ├── digital_random_dice
     ├── image_carousel
+    ├── myvideo_player
     ├── pomodoro
     ├── random_number_generator
     ├── splash_screen
@@ -21,6 +22,7 @@
 ##counter
 ##digital_random_dice
 ##image_carousel
+##myvideo_player
 ##pomodoro
 ##random_number_generator
 ##splash_screen
