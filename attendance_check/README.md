@@ -10,8 +10,8 @@
 - Move the camera to a specific location
 - Utilizing the Material Dialog
 
-<img src="./capture01.png" width="300px">
-<img src="./capture02.png" width="300px">
-<img src="./capture03.png" width="300px">
-<img src="./capture04.png" width="300px">
-<img src="./capture05.png" width="300px">
+<img src="./capture01.png" width="300px" align="left">
+<img src="./capture02.png" width="300px" align="left">
+<img src="./capture03.png" width="300px" align="left">
+<img src="./capture04.png" width="300px" align="left">
+<img src="./capture05.png" width="300px" align="left">
